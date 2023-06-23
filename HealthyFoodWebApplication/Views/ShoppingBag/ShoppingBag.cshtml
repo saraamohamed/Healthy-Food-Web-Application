@@ -1,0 +1,51 @@
+﻿<!-- Page Header Start -->
+<div class="container-fluid page-header wow fadeIn" data-wow-delay="0.1s">
+    <div class="container">
+        <h1 class="display-3 mb-3 animated slideInDown">Shopping Bag</h1>
+        <nav aria-label="breadcrumb animated slideInDown">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a class="text-body" asp-controller="Home" asp-action="GetHomeView">Home</a></li>
+                <li class="breadcrumb-item text-dark active" aria-current="page">Shopping Bag</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!-- Page Header End -->
+<!-- Feature Start -->
+<div class="container-fluid bg-light bg-icon py-6 mb-0">
+    <div class="container">
+        <div class="section-header text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 1000px;">
+            <div>
+                <h1 class="display-5">Your Bag Has</h1>
+            </div>
+            <br />
+            <div class="row">
+                <table class="table table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th scope="col">Serial Number</th>
+                            <th scope="col">Product Name</th>
+                            <th scope="col">Product Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Total Price</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Fresh Tomato</td>
+                            <td>$20.00</td>
+                            <td><center><input type="number" class="form-control" style="width:70px" min="1" value="1" /></center></td>
+                            <td>$60.00</td>
+                            <td><button class="btn btn-secondary">Delete</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h4 class="mt-3">Total Orders Price $60.00</h4>
+            </div>
+            <button class="btn btn-primary btn-lg mt-3">Submit Orders</button>
+        </div>
+    </div>
+</div>
+<!-- Feature End -->
