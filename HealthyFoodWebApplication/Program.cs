@@ -1,5 +1,7 @@
 using HealthyFoodWebApplication.Models;
+using HealthyFoodWebApplication.Repositories.ProductRepository;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Protocol.Core.Types;
 
 namespace HealthyFoodWebApplication
 {
@@ -13,6 +15,9 @@ namespace HealthyFoodWebApplication
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<HealthyFoodDbContext>(options => 
                 options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
+
+
+            builder.Services.AddScoped<IProductRepository,ProductRepository>();
 
             var app = builder.Build();
 
@@ -30,6 +35,7 @@ namespace HealthyFoodWebApplication
             app.UseRouting();
 
             app.UseAuthorization();
+
 
             app.MapControllerRoute(
                 name: "default",

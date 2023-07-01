@@ -3,6 +3,13 @@ namespace HealthyFoodWebApplication.Models
 {
     public class HealthyFoodDbContext : DbContext
     {
+   
+        public HealthyFoodDbContext() : base()
+        {
+        }
+
+     
+
         public HealthyFoodDbContext(DbContextOptions options) : base(options) { }
 
         public DbSet<CustomerMessage> CustomerMessage { get; set; }
