@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace HealthyFoodWebApplication.Models
+namespace HealthyFoodWebApplication.ViewModels
 {
-    public class Logger
+    public class registerVM
     {
+
         [MinLength(7)]
         [MaxLength(20)]
         public string FullName { get; set; }
@@ -19,7 +20,6 @@ namespace HealthyFoodWebApplication.Models
 
 
         [EmailAddress]
-
         public string Email { get; set; }
 
         [Required]
@@ -31,11 +31,7 @@ namespace HealthyFoodWebApplication.Models
         [Compare("Password")]
         public string ConfirmPassword { get; set; }
 
-
         [Required]
         public string Role { get; set; }
-
-        // Navigation Properties
-        public ICollection<ShoppingBagItem> ShoppingBagItems { get; set; } = new List<ShoppingBagItem>();
     }
 }

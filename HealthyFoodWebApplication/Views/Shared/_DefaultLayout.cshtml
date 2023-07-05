@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Authorization
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -44,7 +46,7 @@
             <div class="top-bar row gx-0 align-items-center d-none d-lg-flex">
                 <div class="col-lg-6 px-5 text-start">
                     <small><i class="fa fa-map-marker-alt me-2"></i>19 Street, Mansoura, Egypt</small>
-                    <small class="ms-4"><i class="fa fa-envelope me-2"></i>ourteam@domain.com</small>
+                    <small class="ms-4"><i class="fa fa-envelope me-2"></i>HealthyFood@domain.com</small>
                 </div>
                 <div class="col-lg-6 px-5 text-end">
                     <small>Follow us:</small>
@@ -62,40 +64,55 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto p-4 p-lg-0">
-                        <a asp-controller="Home" asp-action="GetHomeView" class="nav-item nav-link active">Home</a>
-                        <a asp-controller="AboutUs" asp-action="GetAboutUsView" class="nav-item nav-link">About Us</a>
-                        <a asp-controller="Product" asp-action="AddProduct" class="nav-item nav-link">Add Product</a>
-                        <a asp-controller="Product" asp-action="GetProductView" class="nav-item nav-link">Products</a>
-                        <a asp-controller="Service" asp-action="GetServiceView" class="nav-item nav-link">Services</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                            <div class="dropdown-menu m-0">
-                                <a asp-controller="BlogGrid" asp-action="GetBlogGridView" class="dropdown-item">Blog Grid</a>
-                                <a asp-controller="Testimonial" asp-action="GetTestimonialView" class="dropdown-item">Testimonial</a>
-                            </div>
-                        </div>
-                        <a asp-controller="Order" asp-action="GetOrderView" class="nav-item nav-link">Orders</a>
-                        <a asp-controller="ContactUs" asp-action="GetContactUsView" class="nav-item nav-link">Contact Us</a>
-                        <a asp-controller="ContactUs" asp-action="GetMessageView" class="nav-item nav-link">Messages</a>
+                    <div class="navbar-nav ms-auto p-4 p-lg-0"> 
+                       <a asp-controller="Home" asp-action="GetHomeView" class="nav-item nav-link active">Home</a>
+                        @if (User.Identity.IsAuthenticated == false)
+                        {
+                            <!-- Button Trigger Modal login/register -->
+                            <a class="nav-item nav-link" style="cursor:pointer" href="@Url.Action("AddingFirstTime", "Register")">
+                                <small class="fa fa-user text-body"></small>
+                            </a>
+                            <!-- Shopping Bag Link-->
+                           
+                        }
+                        else
+                        {
+                        @if (User.IsInRole("Admin") == true)
+                        {
+
+                            <a asp-controller="Order" asp-action="GetOrderView" class="nav-item nav-link">Orders</a>
+                            <a asp-controller="Product" asp-action="GetProductView" class="nav-item nav-link">Update Products</a>
+
+                            <a asp-controller="Product" asp-action="AddProduct" class="nav-item nav-link">New Product</a>
+
+                            <a asp-controller="ContactUs" asp-action="GetMessageView" class="nav-item nav-link">Custommer Messages</a>
+                                <a class="nav-item nav-link" asp-controller="Login" asp-action="SignOut">
+                                    Sign Out
+                                </a>
+                        }else{
+                            <a asp-controller="AboutUs" asp-action="GetAboutUsView" class="nav-item nav-link">About Us</a>
+                            <a asp-controller="Product" asp-action="GetProductView" class="nav-item nav-link">Products</a>
+
+                            <a asp-controller="ContactUs" asp-action="GetContactUsView" class="nav-item nav-link">Contact Us</a>
+                                <a class="nav-item nav-link" asp-controller="Login" asp-action="SignOut">
+                                    Sign Out
+                                </a>
+                            <a asp-controller="ShoppingBag" asp-action="GetShoppingBagView" class="nav-item nav-link">
+                                <small class="fa fa-shopping-bag text-body"></small>
+                            </a>
+                        }
+
+                          
+                        }
+                       
                     </div>
-                    <div class="d-none d-lg-flex ms-2">
-                        <!-- Button Trigger Modal -->
-                        <a class="btn-sm-square border border-dark bg-white rounded-circle ms-3" style="cursor:pointer" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                            <small class="fa fa-user text-body"></small>
-                        </a>
-                        <!-- Shopping Bag Link-->
-                        <a class="btn-sm-square border border-dark bg-white rounded-circle ms-3" asp-controller="ShoppingBag" asp-action="GetShoppingBagView">
-                            <small class="fa fa-shopping-bag text-body"></small>
-                        </a>
-                    </div>
-                </div>
             </nav>
         </div>
         <!-- Navbar End -->
         <!-- Registration/Login Modal -->
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+       
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Login/Registration Form</h1>
@@ -107,6 +124,7 @@
                 </div>
             </div>
         </div>
+    
     </header>
 
     <div>
@@ -130,9 +148,9 @@
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <h4 class="text-light mb-4">Address</h4>
-                        <p><i class="fa fa-map-marker-alt me-3"></i>19 Street, Mansoura, Egypt</p>
-                        <p><i class="fa fa-phone-alt me-3"></i>+01555566642</p>
-                        <p><i class="fa fa-envelope me-3"></i>ourteam@domain.com</p>
+                        <p><i class="fa fa-map-marker-alt me-3"></i>19 Street, Mansoura ,Egypt</p>
+                        <p><i class="fa fa-phone-alt me-3"></i>+(02)25533221</p>
+                        <p><i class="fa fa-envelope me-3"></i>HealthyFood@domain.com</p>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <h4 class="text-light mb-4">Quick Links</h4>
@@ -145,23 +163,6 @@
                     <div class="col-lg-3 col-md-6">
                         <h4 class="text-light mb-4">Newsletter</h4>
                         <p>Register in our newsletter service to get notifications considering our latest offers.</p>
-                        <div class="position-relative mx-auto" style="max-width: 400px;">
-                            <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
-                            <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container-fluid copyright">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                            &copy;2023 <a href="#">HealthyFood</a>, All Right Reserved.
-                        </div>
-                        <div class="col-md-6 text-center text-md-end">
-                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                            Designed By: <a href="https://htmlcodex.com">HTML Codex</a>, Distributed By: <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -180,6 +181,7 @@
     <script src="~/lib/easing/easing.min.js"></script>
     <script src="~/lib/waypoints/waypoints.min.js"></script>
     <script src="~/lib/owlcarousel/owl.carousel.min.js"></script>
+
 
     <!-- Layout Javascript -->
     <script src="~/js/main.js"></script>

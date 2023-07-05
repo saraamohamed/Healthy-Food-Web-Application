@@ -11340,11 +11340,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\ITI\\FP\\New folder\\Healthy-Food-Web-Application\\HealthyFoodWebApplication\\HealthyFoodWebApplication.csproj",
+      "projectUniqueName": "C:\\Users\\saram\\Downloads\\final\\Healthy-Food-Web-Application-MVC-Project\\Healthy-Food-Web-Application\\HealthyFoodWebApplication\\HealthyFoodWebApplication.csproj",
       "projectName": "HealthyFoodWebApplication",
-      "projectPath": "G:\\ITI\\FP\\New folder\\Healthy-Food-Web-Application\\HealthyFoodWebApplication\\HealthyFoodWebApplication.csproj",
+      "projectPath": "C:\\Users\\saram\\Downloads\\final\\Healthy-Food-Web-Application-MVC-Project\\Healthy-Food-Web-Application\\HealthyFoodWebApplication\\HealthyFoodWebApplication.csproj",
       "packagesPath": "C:\\Users\\saram\\.nuget\\packages\\",
-      "outputPath": "G:\\ITI\\FP\\New folder\\Healthy-Food-Web-Application\\HealthyFoodWebApplication\\obj\\",
+      "outputPath": "C:\\Users\\saram\\Downloads\\final\\Healthy-Food-Web-Application-MVC-Project\\Healthy-Food-Web-Application\\HealthyFoodWebApplication\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\saram\\AppData\\Roaming\\NuGet\\NuGet.Config",

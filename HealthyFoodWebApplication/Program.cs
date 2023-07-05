@@ -1,5 +1,9 @@
 using HealthyFoodWebApplication.Models;
+using HealthyFoodWebApplication.Repositories.CustomerMessageRepository;
+using HealthyFoodWebApplication.Repositories.LoggerRepository;
 using HealthyFoodWebApplication.Repositories.ProductRepository;
+using HealthyFoodWebApplication.Repositories.ShoppingBag;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using NuGet.Protocol.Core.Types;
 
@@ -18,6 +22,12 @@ namespace HealthyFoodWebApplication
 
 
             builder.Services.AddScoped<IProductRepository,ProductRepository>();
+            builder.Services.AddScoped<IShoppingBagRepository, ShoppingBagRepository>();
+            builder.Services.AddScoped<ICustomerMessageRepository, CustomerMessageRepository>();
+            builder.Services.AddScoped<ILoggerRepository, LoggerRepository>();
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+            builder.Services.AddHttpContextAccessor();
+
 
             var app = builder.Build();
 
@@ -34,8 +44,8 @@ namespace HealthyFoodWebApplication
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
-
 
             app.MapControllerRoute(
                 name: "default",

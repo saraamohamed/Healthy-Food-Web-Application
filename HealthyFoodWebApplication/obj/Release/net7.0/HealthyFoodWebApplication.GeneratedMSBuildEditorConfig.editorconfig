@@ -44,6 +44,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIb21lLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[G:/ITI/FP/New folder/Healthy-Food-Web-Application/HealthyFoodWebApplication/Views/Login/loginUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cbG9naW5Vc2VyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [G:/ITI/FP/New folder/Healthy-Food-Web-Application/HealthyFoodWebApplication/Views/Order/Order.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcT3JkZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -52,8 +56,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxBZGRQcm9kdWN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[G:/ITI/FP/New folder/Healthy-Food-Web-Application/HealthyFoodWebApplication/Views/Product/EditProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxFZGl0UHJvZHVjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [G:/ITI/FP/New folder/Healthy-Food-Web-Application/HealthyFoodWebApplication/Views/Product/Product.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxQcm9kdWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/ITI/FP/New folder/Healthy-Food-Web-Application/HealthyFoodWebApplication/Views/Register/AddingFirstTime.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVnaXN0ZXJcQWRkaW5nRmlyc3RUaW1lLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [G:/ITI/FP/New folder/Healthy-Food-Web-Application/HealthyFoodWebApplication/Views/Service/Service.cshtml]

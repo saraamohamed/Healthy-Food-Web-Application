@@ -1,32 +1,39 @@
-﻿//using HealthyFoodWebApplication.Models;
+﻿using HealthyFoodWebApplication.Models;
 
-//namespace HealthyFoodWebApplication.Repositories.LoggerRepository
-//{
-//    public class LoggerRepository : ILoggerRepository
-//    {
-//        public void Delete(Logger entity)
-//        {
-//            throw new NotImplementedException();
-//        }
+namespace HealthyFoodWebApplication.Repositories.LoggerRepository
+{
+    public class LoggerRepository : ILoggerRepository
+    {
+        private readonly HealthyFoodDbContext Context;
+        public LoggerRepository(HealthyFoodDbContext _context)
+        {
+            Context = _context;
+        }
+  
 
-//        public List<Logger>? GetAll()
-//        {
-//            throw new NotImplementedException();
-//        }
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
 
-//        public Logger? GetById(int id)
-//        {
-//            throw new NotImplementedException();
-//        }
+        public List<Logger>? GetAll()
+        {
+            return Context.Logger.ToList();
+        }
 
-//        public void Insert(Logger entity)
-//        {
-//            throw new NotImplementedException();
-//        }
+        public Logger? GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
 
-//        public void Update(Logger entity)
-//        {
-//            throw new NotImplementedException();
-//        }
-//    }
-//}
+        public void Insert(Logger entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(int id, Logger entity)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}

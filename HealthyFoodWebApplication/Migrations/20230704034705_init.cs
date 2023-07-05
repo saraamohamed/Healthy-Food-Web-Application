@@ -5,7 +5,7 @@
 namespace HealthyFoodWebApplication.Migrations
 {
     /// <inheritdoc />
-    public partial class BuildingDatabase : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -30,8 +30,8 @@ namespace HealthyFoodWebApplication.Migrations
                 name: "Logger",
                 columns: table => new
                 {
-                    Username = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Username = table.Column<string>(type: "nvarchar(8)", maxLength: 8, nullable: false),
+                    FullName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -50,7 +50,12 @@ namespace HealthyFoodWebApplication.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Price = table.Column<float>(type: "real", nullable: false)
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    PriceBeforeSale = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Category = table.Column<int>(type: "int", nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -64,10 +69,10 @@ namespace HealthyFoodWebApplication.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProductName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ProductPrice = table.Column<float>(type: "real", nullable: false),
-                    ProductQuantity = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ProductTotalPrice = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Username = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProductPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    ProductQuantity = table.Column<int>(type: "int", nullable: false),
+                    ProductTotalPrice = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Username = table.Column<string>(type: "nvarchar(8)", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -77,8 +82,7 @@ namespace HealthyFoodWebApplication.Migrations
                         name: "FK_ShoppingBag_Logger_Username",
                         column: x => x.Username,
                         principalTable: "Logger",
-                        principalColumn: "Username",
-                        onDelete: ReferentialAction.NoAction);
+                        principalColumn: "Username");
                 });
 
             migrationBuilder.CreateIndex(

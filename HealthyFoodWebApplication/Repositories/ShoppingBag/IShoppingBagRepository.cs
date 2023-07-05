@@ -4,6 +4,9 @@ namespace HealthyFoodWebApplication.Repositories.ShoppingBag
 {
     public interface IShoppingBagRepository : IRepository<ShoppingBagItem>
     {
-        
+        void Save();
+        public void Add(ShoppingBagItem entity);
+        List<ShoppingBagItem>? GetAll();
+
     }
 }

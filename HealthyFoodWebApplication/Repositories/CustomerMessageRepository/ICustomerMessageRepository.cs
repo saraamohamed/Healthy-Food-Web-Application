@@ -4,5 +4,6 @@ namespace HealthyFoodWebApplication.Repositories.CustomerMessageRepository
 {
     public interface ICustomerMessageRepository : IRepository<CustomerMessage>
     {
+
     }
 }

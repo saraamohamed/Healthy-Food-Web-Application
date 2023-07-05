@@ -13,7 +13,8 @@ namespace HealthyFoodWebApplication.Repositories.ProductRepository
         public void Delete(int id)
         {
             Product OldProduct = GetById(id);
-            OldProduct.IsDeleted = true;   
+            OldProduct.IsDeleted = true; 
+            dbContext.SaveChanges();
 
         }
 
@@ -39,9 +40,7 @@ namespace HealthyFoodWebApplication.Repositories.ProductRepository
 
         public void Update(int id,Product UpdatedProduct)
         {
-            Product OldProduct = GetById(id);
-
-            dbContext.Update(UpdatedProduct);
+           dbContext.SaveChanges();
         }
         public List<Product> GetByCategory(ProductType category)
         {

@@ -3,5 +3,7 @@ namespace HealthyFoodWebApplication.Repositories.LoggerRepository
 {
     public interface ILoggerRepository : IRepository<Logger>
     {
+        List<Logger>? GetAll();
+
     }
 }

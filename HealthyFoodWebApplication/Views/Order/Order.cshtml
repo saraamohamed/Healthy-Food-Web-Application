@@ -1,4 +1,8 @@
-﻿<!-- Page Header Start -->
+﻿@using HealthyFoodWebApplication.ViewModels
+@model List<CustomerOrdersVM>
+
+@*@model ShoppingBagItem
+*@<!-- Page Header Start -->
 <div class="container-fluid page-header wow fadeIn" data-wow-delay="0.1s">
     <div class="container">
         <h1 class="display-3 mb-3 animated slideInDown">Orders</h1>
@@ -25,7 +29,7 @@
                         <tr>
                             <th scope="col">Serial Number</th>
                             <th scope="col">Customer Name</th>
-                            <th scope="col">Customer Phone</th>
+                            @*<th scope="col">Customer Phone</th>*@
                             <th scope="col">Product Name</th>
                             <th scope="col">Product Price</th>
                             <th scope="col">Quantity</th>
@@ -34,19 +38,23 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Mohammad Ayman</td>
-                            <td>01500440088</td>
-                            <td>Fresh Tomato</td>
-                            <td>$20.00</td>
-                            <td>3</td>
-                            <td>$60.00</td>
-                            <td><input class="form-check-input fs-5" type="checkbox"></td>
-                        </tr>
-                        <tr class="bg-warning">
+                        
+                            @for(var i =0;i<Model.Count();i++)
+                            {
+                            <tr>
+                               <td>@(i+1)</td>
+                               <td>@Model[i]?.FullName</td>
+                                @*<td>@Model[i]?.PhoneNumber</td>*@
+                                <td>@Model[i]?.ProductName</td>
+                                <td>@Model[i]?.ProductPrice</td>
+                                <td>@Model[i]?.ProductQuantity</td>
+                                <td>@Model[i]?.TotalPrice</td>
+                                <td><input class="form-check-input fs-5" type="checkbox"></td>
+                                </tr>
+                            }
+                        @*<tr class="bg-warning">
                             <td class="fs-5" colspan="8">Total Cost $60.00</td>
-                        </tr>
+                        </tr>*@
                     </tbody>
                 </table>
             </div>

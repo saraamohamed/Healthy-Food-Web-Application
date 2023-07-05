@@ -9,8 +9,10 @@
                         <div class="row justify-content-start">
                             <div class="col-lg-7">
                                 <h1 class="display-2 mb-5 animated slideInDown">Organic Food Is Good For Health</h1>
+                                @if (User.Identity.IsAuthenticated == true)
+                        {
                                 <a asp-controller="Product" asp-action="GetProductView" class="btn btn-primary rounded-pill py-sm-3 px-sm-5">Products</a>
-                                <a asp-controller="Service" asp-action="GetServiceView" class="btn btn-secondary rounded-pill py-sm-3 px-sm-5 ms-3">Services</a>
+                            }
                             </div>
                         </div>
                     </div>
@@ -23,8 +25,10 @@
                         <div class="row justify-content-start">
                             <div class="col-lg-7">
                                 <h1 class="display-2 mb-5 animated slideInDown">Natural Food Is Always Healthy</h1>
+                                         @if (User.Identity.IsAuthenticated == true)
+                        {
                                 <a asp-controller="Product" asp-action="GetProductView" class="btn btn-primary rounded-pill py-sm-3 px-sm-5">Products</a>
-                                <a asp-controller="Service" asp-action="GetServiceView" class="btn btn-secondary rounded-pill py-sm-3 px-sm-5 ms-3">Services</a>
+                        }
                             </div>
                         </div>
                     </div>
@@ -101,21 +105,7 @@
     </div>
 </div>
 <!-- Feature End -->
-<!-- Firm Visit Start -->
-<div class="container-fluid bg-primary bg-icon mt-5 py-6">
-    <div class="container">
-        <div class="row g-5 align-items-center">
-            <div class="col-md-7 wow fadeIn" data-wow-delay="0.1s">
-                <h1 class="display-5 text-white mb-3">Visit Our Firm</h1>
-                <p class="text-white mb-0">Don't hesitate to visit our firm, just click the button, fill the form, and wait for a message from us</p>
-            </div>
-            <div class="col-md-5 text-md-end wow fadeIn" data-wow-delay="0.5s">
-                <a class="btn btn-lg btn-secondary rounded-pill py-3 px-5" asp-controller="ContactUs" asp-action="GetContactUsView">Visit Now</a>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Firm Visit End -->
+
 <!-- Testimonial Start -->
 <div class="container-fluid bg-light bg-icon py-6 mb-5">
     <div class="container">
@@ -172,25 +162,3 @@
     </div>
 </div>
 <!-- Testimonial End -->
-<!-- Blog Start -->
-<div class="container-xxl py-5 mb-5">
-    <div class="container">
-        <div class="section-header text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-            <h1 class="display-5 mb-3">Latest Blog</h1>
-            <p>Check our latest blogs on the website</p>
-        </div>
-        <div class="row g-4">
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                <img class="img-fluid" src="~/img/blog-2.jpg" alt="">
-                <div class="bg-light p-4">
-                    <a class="d-block h5 lh-base mb-4" asp-controller="BlogGrid" asp-action="GetBlogGridView">How to cultivate organic fruits and vegetables in own firm</a>
-                    <div class="text-muted border-top pt-4">
-                        <small class="me-3"><i class="fa fa-user text-primary me-2"></i>Admin</small>
-                        <small class="me-3"><i class="fa fa-calendar text-primary me-2"></i>01 Jan, 2023</small>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Blog End -->

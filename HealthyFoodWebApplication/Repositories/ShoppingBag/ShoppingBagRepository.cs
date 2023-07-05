@@ -1,32 +1,54 @@
-﻿//using HealthyFoodWebApplication.Models;
+﻿using HealthyFoodWebApplication.Models;
+using Microsoft.EntityFrameworkCore;
 
-//namespace HealthyFoodWebApplication.Repositories.ShoppingBag
-//{
-//    public class ShoppingBagRepository : IShoppingBagRepository
-//    {
-//        public void Delete(ShoppingBagItem entity)
-//        {
-//            throw new NotImplementedException();
-//        }
+namespace HealthyFoodWebApplication.Repositories.ShoppingBag
+{
+    public class ShoppingBagRepository : IShoppingBagRepository
+    {
+        HealthyFoodDbContext _context;
+        public ShoppingBagRepository(DbContextOptions<HealthyFoodDbContext> options)
+        {
+            _context = new HealthyFoodDbContext(options);
+        }
+        public void Delete(int id)
+        {
+            ShoppingBagItem bagItem = GetById(id);
+            _context.Remove(bagItem);
 
-//        public List<ShoppingBagItem>? GetAll()
-//        {
-//            throw new NotImplementedException();
-//        }
 
-//        public ShoppingBagItem? GetById(int id)
-//        {
-//            throw new NotImplementedException();
-//        }
+        }
+    
+        public List<ShoppingBagItem>? GetAll()
+        {
+            return _context.ShoppingBag.Include(x => x.Logger).Where(s=>s.Username== s.Logger.Username).ToList();
+        }
 
-//        public void Insert(ShoppingBagItem entity)
-//        {
-//            throw new NotImplementedException();
-//        }
+        public ShoppingBagItem? GetById(int id)
+        {
+            return _context.ShoppingBag.FirstOrDefault(x => x.Id == id);
+        }
 
-//        public void Update(ShoppingBagItem entity)
-//        {
-//            throw new NotImplementedException();
-//        }
-//    }
-//}
+
+        public void Save()
+        {
+            _context.SaveChanges();
+        }
+
+        public void Add(ShoppingBagItem entity)
+        {
+            _context.ShoppingBag.Add(entity);
+        }
+        public void Insert(ShoppingBagItem entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(int id,ShoppingBagItem entity)
+        {
+            throw new NotImplementedException();
+        }
+       
+
+
+    }
+}

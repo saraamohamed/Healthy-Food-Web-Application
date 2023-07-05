@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HealthyFoodWebApplication.Migrations
 {
     [DbContext(typeof(HealthyFoodDbContext))]
-    [Migration("20230625121025_ProductEditv2")]
-    partial class ProductEditv2
+    [Migration("20230704035049_v2")]
+    partial class v2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,7 +57,8 @@ namespace HealthyFoodWebApplication.Migrations
             modelBuilder.Entity("HealthyFoodWebApplication.Models.Logger", b =>
                 {
                     b.Property<string>("Username")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(8)
+                        .HasColumnType("nvarchar(8)");
 
                     b.Property<string>("ConfirmPassword")
                         .IsRequired()
@@ -69,7 +70,8 @@ namespace HealthyFoodWebApplication.Migrations
 
                     b.Property<string>("FullName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("Password")
                         .IsRequired()
@@ -109,11 +111,14 @@ namespace HealthyFoodWebApplication.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("Price")
-                        .HasColumnType("real");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<float?>("PriceBeforeSale")
-                        .HasColumnType("real");
+                    b.Property<decimal?>("PriceBeforeSale")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -135,20 +140,17 @@ namespace HealthyFoodWebApplication.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("ProductPrice")
-                        .HasColumnType("real");
+                    b.Property<decimal>("ProductPrice")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("ProductQuantity")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("ProductQuantity")
+                        .HasColumnType("int");
 
                     b.Property<string>("ProductTotalPrice")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Username")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(8)");
 
                     b.HasKey("Id");
 
@@ -161,9 +163,7 @@ namespace HealthyFoodWebApplication.Migrations
                 {
                     b.HasOne("HealthyFoodWebApplication.Models.Logger", "Logger")
                         .WithMany("ShoppingBagItems")
-                        .HasForeignKey("Username")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("Username");
 
                     b.Navigation("Logger");
                 });
